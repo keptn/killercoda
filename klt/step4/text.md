@@ -6,12 +6,6 @@ make deploy-version-2
 
 It will take a few moments for the frontend to start and until that time, the pre-deploy checks for the other pods will error and the other pods will stay pending.
 
-While you are waiting, you can see the status of each KeptnApp version with this command:
-
-```
-kubectl -n podtato-kubectl get keptnappversions -o wide
-```{{exec}}
-
 After a few moments, all pods should start successfully.
 
 ```
@@ -35,7 +29,11 @@ podtato-head-right-arm-66878d7d9b-8thbh     1/1     Running     0          11m
 
 Version two has one crucial difference.
 
-Try to find out why version 2 is allowed to start (hint: `KeptnEvaluationDefinition`{{}} called `app-pre-deploy-eval-2`{{}}).
+Try to find out why version 2 is allowed to start.
+
+Hint:
+
+- `KeptnEvaluationDefinition`{{copy}} called `app-pre-deploy-eval-2`{{copy}}).
 
 ## Explanation
 
@@ -45,7 +43,7 @@ Version 2 of the `KeptnApp`{{}} has a different pre-evaluation check configured.
 cat ~/lifecycle-toolkit-examples/sample-app/version-2/app.yaml
 ```{{exec}}
 
-The definition shows that the `evaluationTarget`{{}} for `available-cpus`{{}} has been lowered from >100 to >1.
+The definition shows that the `evaluationTarget`{{}} for `available-cpus`{{}} has been lowered from `>100`{{}} to `>1`{{}},
 
 Look for the `Evaluation Target`{{}} in the output of this command:
 
@@ -53,10 +51,12 @@ Look for the `Evaluation Target`{{}} in the output of this command:
 kubectl -n podtato-kubectl describe keptnevaluationdefinition app-pre-deploy-eval-2
 ```{{exec}}
 
-Retrieving the metric shows the current value to be 4.
+Retrieving the metric shows the current value to be `>1`{{}}
 
 ```
 kubectl -n podtato-kubectl get keptnmetrics
 ```{{exec}}
 
 The pre-condition check is **met** and so the pods are allowed to be bound to the node.
+
+

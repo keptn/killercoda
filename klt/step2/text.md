@@ -59,7 +59,7 @@ cat ~/lifecycle-toolkit-examples/sample-app/base/app.yaml
 
 ## Step 4: Pre and Post Deployment Actions
 
-KLT allows two types of pre and post deployment actions on both the (individual) workload level and at the KeptnApp level:
+KLT allows two types of pre and post deployment action on both the (individual) workload level and at the KeptnApp level:
 
 - [KeptnTaskDefinitions](https://lifecycle.keptn.sh/docs/concepts/tasks/)
 - [KeptnEvaluationDefinitions](https://lifecycle.keptn.sh/docs/concepts/evaluations/)
@@ -114,7 +114,7 @@ kubectl -n podtato-kubectl describe keptntaskdefinition pre-deployment-check-fro
 
 This task takes a parameter (the URL) and a [remotely hosted JavaScript function](https://raw.githubusercontent.com/keptn-sandbox/lifecycle-controller/main/functions-runtime/samples/ts/http.ts) which simply does a fetch of the application endpoint in the cluster to check it is running.
 
-A post-deployment task is configured using the label: `keptn.sh/post-deployment-tasks`{{copy}}.
+A post-deployment task is configured using the label: `keptn.sh/post-deployment-tasks`{{}}.
 
 ## Pre and Post Deployment Evaluations
 
@@ -145,10 +145,10 @@ kubectl -n podtato-kubectl describe keptnmetric available-cpus
 Data is retrieved from Prometheus with the query: `sum(kube_node_status_capacity{resource='cpu'})`{{}}
 
 
-[KeptnMetricsProvider](https://lifecycle.keptn.sh/docs/concepts/metrics/) CRDs describe metric sources. Take a look at the `prometheus` one:
+[KeptnMetricsProvider](https://lifecycle.keptn.sh/docs/concepts/metrics/) CRDs describe metric sources. Take a look at the `my-provider`{{}} one:
 
 ```
-kubectl -n podtato-kubectl describe keptnmetricsprovider prometheus
+kubectl -n podtato-kubectl describe keptnmetricsprovider my-provider
 ```{{exec}}
 
 The `targetServer`{{}} field shows where the data is being retrieved from. KLT supports retrieval from **any** metric storage system.

@@ -1,5 +1,5 @@
 {
-  "title": "Keptn Lifecycle Toolkit WIP",
+  "title": "Keptn Lifecycle Toolkit",
   "description": "Toolkit for cloud-native application lifecycle management.",
   "details": {
     "intro": {
@@ -9,11 +9,11 @@
     },
     "steps": [
       {
-        "title": "Deploy v1",
+        "title": "Step 1",
         "text": "step1/text.md"
       },
       {
-        "title": "How KLT Works",
+        "title": "Step 2",
         "text": "step2/text.md"
       },
       {
